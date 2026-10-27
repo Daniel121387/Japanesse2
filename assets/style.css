@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+/* 색상 변수(--accent 등)와 --font-scale 은 app.py가 테마(라이트/다크)에 맞춰 지정한다 */
+
+[lang="ja"] { font-family: 'Noto Sans JP', sans-serif; }
+
+/* ---------- 공통 ---------- */
+.block-container { padding-top: 2.5rem; padding-bottom: 4rem; }
+h1 { font-size: 1.9rem !important; }
+h3 { font-size: 1.35rem !important; }
+
+/* 손가락으로 누르기 쉬운 버튼 */
+.stButton button, .stFormSubmitButton button, .stDownloadButton button,
+[data-testid="stPageLink"] a {
+  min-height: 48px;
+}
+
+.muted { color: var(--muted); font-size: 0.9rem; }
+
+.chip {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ---------- 휴대폰용 하단 내비게이션 ----------
+   좁은 화면에서는 상단 메뉴가 사이드바(≡)로 접히므로 주요 메뉴를 화면 아래에 고정한다 */
+.st-key-mobile_nav { display: none !important; }
+@media (max-width: 640px) {
+  .st-key-mobile_nav {
+    display: flex !important;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 999990;
+    padding: 0.25rem 0.25rem calc(0.25rem + env(safe-area-inset-bottom));
+    background: var(--nav-bg);
+    border-top: 1px solid var(--card-border);
+    gap: 0 !important;
+  }
+  .st-key-mobile_nav > div { flex: 1 1 0; min-width: 0; }
+  .st-key-mobile_nav [data-testid="stPageLink"] a {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding: 0.2rem 0;
+    min-height: 52px;
+  }
+  .st-key-mobile_nav [data-testid="stPageLink"] p { font-size: 0.72rem; }
+  .block-container { padding-bottom: 6rem; }
+  h1 { font-size: 1.6rem !important; }
+  h3 { font-size: 1.2rem !important; }
+}
+
+/* ---------- 문장 카드 ---------- */
+.sentence-card {
+  padding: 1.75rem 1rem 1.5rem;
+  border-radius: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 10px var(--shadow);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.sentence-card .jp {
+  font-size: calc(28px * var(--font-scale, 1));
+  font-weight: 700;
+  line-height: 1.4;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.sentence-card .reading { font-size: 15px; color: var(--muted); margin-top: 0.3rem; }
+.sentence-card .pron {
+  font-size: calc(24px * var(--font-scale, 1));
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 0.9rem;
+  word-break: keep-all;
+}
+.sentence-card .meaning { font-size: 18px; margin-top: 0.4rem; }
+@media (min-width: 768px) {
+  .sentence-card .jp { font-size: calc(36px * var(--font-scale, 1)); }
+  .sentence-card .pron { font-size: calc(26px * var(--font-scale, 1)); }
+}
+
+/* 플래시카드: 앞면은 한 줄만 크게 */
+.flash-card {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flash-card .meaning { font-size: calc(26px * var(--font-scale, 1)); font-weight: 700; margin: 0; }
+
+.tip {
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  margin: 0.5rem 0 1rem;
+}
+
+/* 따라 말하기 진행 점 */
+.dots { font-size: 2rem; letter-spacing: 0.35rem; color: var(--accent); line-height: 1.2; }
+
+/* ---------- 홈 ---------- */
+.hero {
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--solid) 0%, var(--solid-deep) 100%);
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+.hero .label { font-size: 0.95rem; opacity: 0.9; }
+.hero .dday { font-size: 3.4rem; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.hero .sub { font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem; }
+
+.todo-card {
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  margin-bottom: 0.75rem;
+}
+.todo-card .kind { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
+.todo-card .title { font-size: 1.25rem; font-weight: 700; margin-top: 0.15rem; }
+.todo-card .detail { color: var(--muted); margin-top: 0.15rem; }
+
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0.5rem 0 0.25rem;
+}
+.week-cell {
+  border-radius: 8px;
+  padding: 0.35rem 0;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+}
+.week-cell b { display: block; font-size: 0.8rem; }
+.week-cell.done { background: var(--solid); border-color: var(--solid); color: #ffffff; }
+.week-cell.partial { background: var(--accent-soft); color: var(--text); }
+.week-cell.current { border: 2px solid var(--accent); color: var(--text); font-weight: 700; }
+.legend { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- 테스트 ---------- */
+.score {
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border-radius: 18px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  margin-bottom: 1rem;
+}
+.score .num { font-size: 3.6rem; font-weight: 700; line-height: 1.1; color: var(--accent); }
+.score .num small { font-size: 1.4rem; }
+.score .sub { color: var(--muted); }
+.question { font-size: calc(22px * var(--font-scale, 1)); font-weight: 700; margin: 0.25rem 0 0.5rem; word-break: keep-all; }
+.ok { color: var(--ok); font-weight: 700; }
+.ng { color: var(--ng); font-weight: 700; }
+
+/* ---------- 여행 ---------- */
+.travel-card .jp { font-size: calc(24px * var(--font-scale, 1)); font-weight: 700; line-height: 1.4; word-break: keep-all; }
+.travel-meaning { font-size: 1.05rem; font-weight: 700; }
+.travel-pron { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+/* 보여주기 모드: 테마와 상관없이 흰 바탕 검은 글씨로 최대 대비 */
+.show-card {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  text-align: center;
+  background: #ffffff;
+  color: #111111;
+  border: 3px solid #111111;
+}
+.show-card .jp {
+  font-size: calc(44px * var(--font-scale, 1));
+  font-weight: 700;
+  line-height: 1.35;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+@media (min-width: 768px) {
+  .show-card .jp { font-size: calc(64px * var(--font-scale, 1)); }
+}
+
+/* ---------- 빈 상태 ---------- */
+.empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 16px;
+  border: 1px dashed var(--card-border);
+  color: var(--muted);
+}
+.empty .icon { font-size: 2.2rem; }
+.empty .title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-top: 0.4rem; }

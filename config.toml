@@ -1,0 +1,25 @@
+[theme]
+font = "Noto Sans KR:https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap, sans-serif"
+headingFontWeights = 700
+baseRadius = "0.75rem"
+buttonRadius = "0.75rem"
+
+# 일본 여행 느낌의 따뜻한 색: 주홍(메인) + 남색(포인트), 종이(와시) 같은 배경
+[theme.light]
+primaryColor = "#C2410C"
+backgroundColor = "#FBF8F3"
+secondaryBackgroundColor = "#F3ECE2"
+textColor = "#2B2420"
+borderColor = "#E6DCCF"
+linkColor = "#2D3A8C"
+
+[theme.dark]
+primaryColor = "#E2622F"
+backgroundColor = "#1B1816"
+secondaryBackgroundColor = "#27221F"
+textColor = "#F2EBE3"
+borderColor = "#3A332E"
+linkColor = "#9AA8FF"
+
+[client]
+toolbarMode = "minimal"

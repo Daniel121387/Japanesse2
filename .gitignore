@@ -1,0 +1,10 @@
+.streamlit/secrets.toml
+data/progress.db
+.tts_cache/
+__pycache__/
+.pytest_cache/
+screenshots/
+.playwright-mcp/
+
+# 앱과 관계없는 문서
+*.docx
